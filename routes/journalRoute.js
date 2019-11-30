@@ -12,6 +12,11 @@ JournalRoute.get('/:entryId', async (req, res) => {
     res.send(post)
 })
 
+JournalRoute.delete('/:entryId', async (req, res) => {
+    const post = await Journal.findByIdAndDelete(req.params.entryId)
+    res.send(post)
+})
+
 JournalRoute.post('/', async (req, res) => {
     const journalEntry = new Journal({
         title: req.body.title,
