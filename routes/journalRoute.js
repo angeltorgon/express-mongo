@@ -7,6 +7,11 @@ JournalRoute.get('/', async (req, res) => {
     res.send(posts)
 })
 
+JournalRoute.get('/:entryId', async (req, res) => {
+    const post = await Journal.findById(req.params.entryId)
+    res.send(post)
+})
+
 JournalRoute.post('/', async (req, res) => {
     const journalEntry = new Journal({
         title: req.body.title,
