@@ -2,8 +2,9 @@ const express = require('express');
 const JournalRoute = express.Router();
 const Journal = require('../models/Journal');
 
-JournalRoute.get('/', (req, res) => {
-    res.send("You are in Journal route!")
+JournalRoute.get('/', async (req, res) => {
+    const posts = await Journal.find();
+    res.send(posts)
 })
 
 JournalRoute.post('/', async (req, res) => {
