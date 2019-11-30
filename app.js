@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const server = express();
-const Journal = require('./routes/journalEntries');
+const JournalRoute = require('./routes/journalRoute.js');
 const port = process.env.PORT;
 
 server.listen(port, () => {
@@ -10,7 +10,7 @@ server.listen(port, () => {
 
 server.use(express.json())
 
-server.use('/journal', Journal)
+server.use('/journal', JournalRoute)
 
 server.get('/', (req, res) => {
     res.send("Welcome to express-mongo server!")
